@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class ExpandAcronymsTextTransformation implements TextTransformation{
     public static final String NAME = "expand";
 
-    private Map<String, String> map = new HashMap<>() {{
+    private static final Map<String, String> acronymsMap = new HashMap<>() {{
         put("prof.", "professor");
         put("dr", "doctor");
         put("e.g.", "for example");
@@ -25,7 +25,7 @@ public class ExpandAcronymsTextTransformation implements TextTransformation{
         return Arrays.asList(s.split(" "))
                 .stream()
                 .map(el -> {
-                    String word = map.get(el.toLowerCase(Locale.ROOT));
+                    String word = acronymsMap.get(el.toLowerCase(Locale.ROOT));
 
                     if (word == null) {
                         return el;
