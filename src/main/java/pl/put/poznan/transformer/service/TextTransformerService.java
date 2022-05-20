@@ -4,6 +4,9 @@ import org.springframework.stereotype.Service;
 import pl.put.poznan.transformer.exceptions.TransformationNotFoundException;
 import pl.put.poznan.transformer.transformation.IdentityTextTransformation;
 import pl.put.poznan.transformer.transformation.ReverseTextTransformation;
+import pl.put.poznan.transformer.transformation.LowerTextTransformation;
+import pl.put.poznan.transformer.transformation.UpperTextTransformation;
+import pl.put.poznan.transformer.transformation.CapitalizeTextTransformation;
 import pl.put.poznan.transformer.transformation.TextTransformation;
 
 import java.util.Collection;
@@ -17,7 +20,10 @@ public class TextTransformerService {
 
     private static final Map<String, TextTransformation> TRANSFORMATIONS = Map.of(
             IdentityTextTransformation.NAME, new IdentityTextTransformation(),
-            ReverseTextTransformation.NAME, new ReverseTextTransformation());
+            ReverseTextTransformation.NAME, new ReverseTextTransformation(),
+            LowerTextTransformation.NAME, new LowerTextTransformation(),
+            UpperTextTransformation.NAME, new UpperTextTransformation(),
+            CapitalizeTextTransformation.NAME, new CapitalizeTextTransformation());
 
     public String transform(final String text, final Collection<String> transformations) {
         final List<TextTransformation> textTransformations =
