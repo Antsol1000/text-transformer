@@ -14,7 +14,12 @@ public class CapitalizeTextTransformation implements TextTransformation{
 
         return Arrays.asList(s.split(" "))
                 .stream()
-                .map(el -> el.substring(0, 1).toUpperCase() + el.substring(1))
+                .map(el -> {
+                    if ("".equals(el)) {
+                        return el;
+                    }
+                    return el.substring(0, 1).toUpperCase() + el.substring(1);
+                })
                 .collect(Collectors.joining(" "));
     }
 }

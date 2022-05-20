@@ -2,6 +2,7 @@ package pl.put.poznan.transformer.service;
 
 import org.springframework.stereotype.Service;
 import pl.put.poznan.transformer.exceptions.TransformationNotFoundException;
+import pl.put.poznan.transformer.transformation.ExpandAcronymsTextTransformation;
 import pl.put.poznan.transformer.transformation.IdentityTextTransformation;
 import pl.put.poznan.transformer.transformation.ReverseTextTransformation;
 import pl.put.poznan.transformer.transformation.LowerTextTransformation;
@@ -21,6 +22,7 @@ public class TextTransformerService {
     private static final Map<String, TextTransformation> TRANSFORMATIONS = Map.of(
             IdentityTextTransformation.NAME, new IdentityTextTransformation(),
             ReverseTextTransformation.NAME, new ReverseTextTransformation(),
+            ExpandAcronymsTextTransformation.NAME, new ExpandAcronymsTextTransformation(),
             LowerTextTransformation.NAME, new LowerTextTransformation(),
             UpperTextTransformation.NAME, new UpperTextTransformation(),
             CapitalizeTextTransformation.NAME, new CapitalizeTextTransformation());
