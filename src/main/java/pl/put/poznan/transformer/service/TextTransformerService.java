@@ -22,8 +22,7 @@ public class TextTransformerService {
     private static final Map<String, TextTransformation> TRANSFORMATIONS = Map.of(
             IdentityTextTransformation.NAME, new IdentityTextTransformation(),
             ReverseTextTransformation.NAME, new ReverseTextTransformation(),
-            ExpandAcronymsTextTransformation.NAME, new ExpandAcronymsTextTransformation());
-            ReverseTextTransformation.NAME, new ReverseTextTransformation(),
+            ExpandAcronymsTextTransformation.NAME, new ExpandAcronymsTextTransformation(),
             LowerTextTransformation.NAME, new LowerTextTransformation(),
             UpperTextTransformation.NAME, new UpperTextTransformation(),
             CapitalizeTextTransformation.NAME, new CapitalizeTextTransformation());
