@@ -20,7 +20,8 @@ public class TextTransformerService {
             LowerTextTransformation.NAME, new LowerTextTransformation(),
             UpperTextTransformation.NAME, new UpperTextTransformation(),
             CapitalizeTextTransformation.NAME, new CapitalizeTextTransformation(),
-            LatexTextTransformation.NAME, new LatexTextTransformation());
+            LatexTextTransformation.NAME, new LatexTextTransformation(),
+            NumbersTextTransformation.NAME, new NumbersTextTransformation());
 
     public String transform(final String text, final Collection<String> transformations) {
         final List<TextTransformation> textTransformations =
