@@ -2,13 +2,7 @@ package pl.put.poznan.transformer.service;
 
 import org.springframework.stereotype.Service;
 import pl.put.poznan.transformer.exceptions.TransformationNotFoundException;
-import pl.put.poznan.transformer.transformation.ExpandAcronymsTextTransformation;
-import pl.put.poznan.transformer.transformation.IdentityTextTransformation;
-import pl.put.poznan.transformer.transformation.ReverseTextTransformation;
-import pl.put.poznan.transformer.transformation.LowerTextTransformation;
-import pl.put.poznan.transformer.transformation.UpperTextTransformation;
-import pl.put.poznan.transformer.transformation.CapitalizeTextTransformation;
-import pl.put.poznan.transformer.transformation.TextTransformation;
+import pl.put.poznan.transformer.transformation.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,7 +19,8 @@ public class TextTransformerService {
             ExpandAcronymsTextTransformation.NAME, new ExpandAcronymsTextTransformation(),
             LowerTextTransformation.NAME, new LowerTextTransformation(),
             UpperTextTransformation.NAME, new UpperTextTransformation(),
-            CapitalizeTextTransformation.NAME, new CapitalizeTextTransformation());
+            CapitalizeTextTransformation.NAME, new CapitalizeTextTransformation(),
+            LatexTextTransformation.NAME, new LatexTextTransformation());
 
     public String transform(final String text, final Collection<String> transformations) {
         final List<TextTransformation> textTransformations =
