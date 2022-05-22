@@ -21,7 +21,8 @@ public class TextTransformerService {
             CapitalizeTextTransformation.NAME, CapitalizeTextTransformation::new,
             LatexTextTransformation.NAME, LatexTextTransformation::new,
             NumbersTextTransformation.NAME, NumbersTextTransformation::new,
-            ReplaceWithAcronymsTransformation.NAME, ReplaceWithAcronymsTransformation::new);
+            ReplaceWithAcronymsTransformation.NAME, ReplaceWithAcronymsTransformation::new,
+            RemoveRepetitionsTransformation.NAME, RemoveRepetitionsTransformation::new);
 
     public String transform(final TextWithTransformationsDTO dto) {
         final String text = dto.getText();
