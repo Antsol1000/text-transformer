@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>pl.put.poznan.transformer.transformation</OriginalElement>
+  <nodes>
+    <node x="1538.0" y="271.0">pl.put.poznan.transformer.transformation.RemoveRepetitionsTransformation</node>
+    <node x="1834.0" y="271.0">pl.put.poznan.transformer.transformation.ReverseTextTransformation</node>
+    <node x="2083.0" y="282.0">pl.put.poznan.transformer.transformation.IdentityTextTransformation</node>
+    <node x="1069.0" y="271.0">pl.put.poznan.transformer.transformation.LatexTextTransformation</node>
+    <node x="2329.0" y="260.0">pl.put.poznan.transformer.transformation.ExpandAcronymsTextTransformation</node>
+    <node x="1300.0" y="271.0">pl.put.poznan.transformer.transformation.UpperTextTransformation</node>
+    <node x="1120.75" y="0.0">pl.put.poznan.transformer.transformation.TextTransformation</node>
+    <node x="574.9999999999999" y="271.0">pl.put.poznan.transformer.transformation.LowerTextTransformation</node>
+    <node x="314.9999999999999" y="271.0">pl.put.poznan.transformer.transformation.CapitalizeTextTransformation</node>
+    <node x="811.9999999999999" y="128.0">pl.put.poznan.transformer.transformation.NumbersTextTransformation</node>
+    <node x="0.0" y="260.0">pl.put.poznan.transformer.transformation.ReplaceWithAcronymsTransformation</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="pl.put.poznan.transformer.transformation.ExpandAcronymsTextTransformation" target="pl.put.poznan.transformer.transformation.TextTransformation" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.0" />
+      <point x="2473.0" y="103.0" />
+      <point x="1291.75" y="103.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="pl.put.poznan.transformer.transformation.LowerTextTransformation" target="pl.put.poznan.transformer.transformation.TextTransformation" relationship="GENERALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="683.4999999999999" y="103.0" />
+      <point x="1291.75" y="103.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="pl.put.poznan.transformer.transformation.CapitalizeTextTransformation" target="pl.put.poznan.transformer.transformation.TextTransformation" relationship="GENERALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="434.9999999999999" y="103.0" />
+      <point x="1291.75" y="103.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="pl.put.poznan.transformer.transformation.UpperTextTransformation" target="pl.put.poznan.transformer.transformation.TextTransformation" relationship="GENERALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="1409.0" y="103.0" />
+      <point x="1291.75" y="103.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="pl.put.poznan.transformer.transformation.NumbersTextTransformation" target="pl.put.poznan.transformer.transformation.TextTransformation" relationship="GENERALIZATION">
+      <point x="1.1368683772161603E-13" y="-193.0" />
+      <point x="930.5" y="103.0" />
+      <point x="1291.75" y="103.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="pl.put.poznan.transformer.transformation.LatexTextTransformation" target="pl.put.poznan.transformer.transformation.TextTransformation" relationship="GENERALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="1174.5" y="103.0" />
+      <point x="1291.75" y="103.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="pl.put.poznan.transformer.transformation.ReplaceWithAcronymsTransformation" target="pl.put.poznan.transformer.transformation.TextTransformation" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.0" />
+      <point x="147.5" y="103.0" />
+      <point x="1291.75" y="103.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="pl.put.poznan.transformer.transformation.ReverseTextTransformation" target="pl.put.poznan.transformer.transformation.TextTransformation" relationship="GENERALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="1948.5" y="103.0" />
+      <point x="1291.75" y="103.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="pl.put.poznan.transformer.transformation.RemoveRepetitionsTransformation" target="pl.put.poznan.transformer.transformation.TextTransformation" relationship="GENERALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="1676.0" y="103.0" />
+      <point x="1291.75" y="103.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="pl.put.poznan.transformer.transformation.IdentityTextTransformation" target="pl.put.poznan.transformer.transformation.TextTransformation" relationship="GENERALIZATION">
+      <point x="0.0" y="-39.0" />
+      <point x="2196.0" y="103.0" />
+      <point x="1291.75" y="103.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.347743648084945" showDependencies="false" x="1308.5" y="255.56215921483096" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
