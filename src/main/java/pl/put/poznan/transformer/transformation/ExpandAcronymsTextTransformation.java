@@ -6,26 +6,32 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class ExpandAcronymsTextTransformation implements TextTransformation{
+public class ExpandAcronymsTextTransformation extends TextTransformation {
     public static final String NAME = "expand";
 
-    private static final Map<String, String> acronymsMap = new HashMap<>() {{
+    public ExpandAcronymsTextTransformation() {
+        super();
+    }
+
+    public ExpandAcronymsTextTransformation(final TextTransformation previousTransformation) {
+        super(previousTransformation);
+    }
+
+    private static final Map<String, String> ACRONYMS_MAP = new HashMap<>() {{
         put("prof.", "professor");
         put("dr", "doctor");
         put("e.g.", "for example");
         put("aso", "and so on");
     }};
 
-    @Override
-    public String apply(String s) {
-        if ("".equals(s)) {
-            return s;
+    private String expand(final String text) {
+        if ("".equals(text)) {
+            return text;
         }
 
-        return Arrays.asList(s.split(" "))
-                .stream()
+        return Arrays.stream(text.split(" "))
                 .map(el -> {
-                    String word = acronymsMap.get(el.toLowerCase(Locale.ROOT));
+                    String word = ACRONYMS_MAP.get(el.toLowerCase(Locale.ROOT));
 
                     if (word == null) {
                         return el;
@@ -38,5 +44,10 @@ public class ExpandAcronymsTextTransformation implements TextTransformation{
                     return word;
                 })
                 .collect(Collectors.joining(" "));
+    }
+
+    @Override
+    public String transform(final String text) {
+        return expand(super.transform(text));
     }
 }

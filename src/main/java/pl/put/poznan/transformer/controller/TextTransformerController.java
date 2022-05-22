@@ -27,7 +27,7 @@ public class TextTransformerController {
         log.info("Got text to transform: {}", dto.getText());
         log.info("Got transformations to apply : {}", Arrays.toString(dto.getTransformations().toArray()));
         try {
-            return ResponseEntity.ok(service.transform(dto.getText(), dto.getTransformations()));
+            return ResponseEntity.ok(service.transform(dto));
         } catch (final TransformationNotFoundException e) {
             log.warn(e.getMessage());
             return ResponseEntity.badRequest().body(e.getMessage());

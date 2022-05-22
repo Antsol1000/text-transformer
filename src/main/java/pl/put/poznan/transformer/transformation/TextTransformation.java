@@ -1,16 +1,20 @@
 package pl.put.poznan.transformer.transformation;
 
-import java.util.Collection;
-import java.util.function.Function;
+import java.util.Optional;
 
-public interface TextTransformation extends Function<String, String> {
-    static TextTransformation composeAll(final Collection<TextTransformation> transformations) {
-        return text -> {
-            String result = text;
-            for (TextTransformation t : transformations) {
-                result = t.apply(result);
-            }
-            return result;
-        };
+public abstract class TextTransformation {
+
+    private final Optional<TextTransformation> previousTransformation;
+
+    public TextTransformation() {
+        this.previousTransformation = Optional.empty();
+    }
+
+    public TextTransformation(final TextTransformation previousTransformation) {
+        this.previousTransformation = Optional.of(previousTransformation);
+    }
+
+    public String transform(final String text) {
+        return previousTransformation.orElseGet(IdentityTextTransformation::new).transform(text);
     }
 }
