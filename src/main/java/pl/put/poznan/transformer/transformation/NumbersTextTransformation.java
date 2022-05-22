@@ -6,13 +6,18 @@ import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Class proving transformation of numbers up from (-1000,1000) into text form
+ * @author Nina Zukowska
+ * @version 1.5
+ */
 public class NumbersTextTransformation implements TextTransformation {
     public static final String NAME = "numbers";
 
     private static final String[] ONE_DIGIT = new String[]{"zero", "one", "two", "three", "four", "ive", "six", "seven"
             , "eight", "nine"};
     private static final String[] TWO_DIGITS = new String[]{"ten", "eleven", "twelve", "thirteen", "fourteen",
-            "fifteen", "sixteen", "seventeen", "sighteen", "nineteen"};
+            "fifteen", "sixteen", "seventeen", "sixteen", "nineteen"};
     private static final String[] MULTIPLE_OF_TENS = new String[]{"", "", "twenty", "thirty", "forty", "fifty", "sixty"
             , "seventy", "eighty", "ninety"};
     private static final String[] POWER_OF_TENS = new String[]{"hundred", "thousand"};
@@ -43,7 +48,10 @@ public class NumbersTextTransformation implements TextTransformation {
         return ONE_DIGIT[Character.getNumericValue(num[length - 3])] + " " + POWER_OF_TENS[0] + this.getTwoDigit(num,
                 length);
     }
-
+    /** Picks up floating point numbers and transforms them into text, if in the given range (-1000, 1000)
+     * @param s The string to which the transformation will be applied to
+     * @return Transformed string
+     */
     private String getFloat(String s) {
         String[] splitted = s.split("\\.");
         String new_s = splitted[0];
@@ -59,6 +67,10 @@ public class NumbersTextTransformation implements TextTransformation {
                 + " thousandths";
     }
 
+    /** Picks up intigers and transforms them into text, if in the given range (-1000, 1000)
+     * @param s The string to which the transformation will be applied to
+     * @return Transformed string
+     */
     private String getInt(String s) {
         String res = "";
         String new_s = s;
@@ -111,6 +123,12 @@ public class NumbersTextTransformation implements TextTransformation {
         return floatsList;
     }
 
+    /** Applies
+     * @param s The string to which the transformation will be applied to
+     * @return Transformed string, with floats and ints as text
+     * @see NumbersTextTransformation#getInts(String)
+     * @see NumbersTextTransformation#getFloats(String)
+     */
     @Override
     public String apply(String s) {
         return this.getInts(this.getFloats(s));
