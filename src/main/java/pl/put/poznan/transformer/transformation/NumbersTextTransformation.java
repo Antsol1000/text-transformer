@@ -6,6 +6,11 @@ import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Class proving transformation of numbers in the range (-1000, 1000) to text
+ * @author Nina Zukowska
+ * @version 1.6
+ */
 public class NumbersTextTransformation extends TextTransformation {
     public static final String NAME = "numbers";
 
@@ -81,6 +86,11 @@ public class NumbersTextTransformation extends TextTransformation {
         return res + this.getThreeDigit(new_s.toCharArray());
     }
 
+    /**
+     * Method applying the transformation of floating point numbers into text
+     * @param s The text to which transformation will be applied
+     * @return transformed text
+     */
     private String getFloats(String s) {
         ArrayList<String> listOfFloats = this.findFloats(s);
         return listOfFloats.stream()
@@ -89,6 +99,11 @@ public class NumbersTextTransformation extends TextTransformation {
                 .apply(s);
     }
 
+    /**
+     * Method applying the transformation of integers into text
+     * @param s The text to which transformation will be applied
+     * @return transformed text
+     */
     private String getInts(String s) {
         List<String> listDistinct = this.findIntegers(s); //make it distinct
 
@@ -123,6 +138,13 @@ public class NumbersTextTransformation extends TextTransformation {
         return getInts(this.getFloats(text));
     }
 
+    /**
+     * Method applying the transformation of numbers into text
+     * @param text The text to which transformation will be applied
+     * @return transformed text
+     * @see NumbersTextTransformation#getFloats(String)
+     * @see NumbersTextTransformation#getInts(String)
+     */
     @Override
     public String transform(final String text) {
         return numbers(super.transform(text));
