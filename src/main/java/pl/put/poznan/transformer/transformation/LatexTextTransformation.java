@@ -1,7 +1,7 @@
 package pl.put.poznan.transformer.transformation;
 
 /**
- * Class proving transformation of & and $ into latex format
+ * Class proving transformation of selected symbols into latex format
  * @author Nina Zukowska
  * @version 1.6
  */
