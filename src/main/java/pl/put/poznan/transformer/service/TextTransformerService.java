@@ -2,34 +2,38 @@ package pl.put.poznan.transformer.service;
 
 import org.springframework.stereotype.Service;
 import pl.put.poznan.transformer.exceptions.TransformationNotFoundException;
+import pl.put.poznan.transformer.model.TextWithTransformationsDTO;
 import pl.put.poznan.transformer.transformation.*;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 
 @Service
 public class TextTransformerService {
 
-    private static final Map<String, TextTransformation> TRANSFORMATIONS = Map.of(
-            IdentityTextTransformation.NAME, new IdentityTextTransformation(),
-            ReverseTextTransformation.NAME, new ReverseTextTransformation(),
-            ExpandAcronymsTextTransformation.NAME, new ExpandAcronymsTextTransformation(),
-            LowerTextTransformation.NAME, new LowerTextTransformation(),
-            UpperTextTransformation.NAME, new UpperTextTransformation(),
-            CapitalizeTextTransformation.NAME, new CapitalizeTextTransformation(),
-            LatexTextTransformation.NAME, new LatexTextTransformation(),
-            NumbersTextTransformation.NAME, new NumbersTextTransformation());
+    private static final Map<String, Function<TextTransformation, TextTransformation>> TRANSFORMATIONS = Map.of(
+            IdentityTextTransformation.NAME, IdentityTextTransformation::new,
+            ReverseTextTransformation.NAME, ReverseTextTransformation::new,
+            ExpandAcronymsTextTransformation.NAME, ExpandAcronymsTextTransformation::new,
+            LowerTextTransformation.NAME, LowerTextTransformation::new,
+            UpperTextTransformation.NAME, UpperTextTransformation::new,
+            CapitalizeTextTransformation.NAME, CapitalizeTextTransformation::new,
+            LatexTextTransformation.NAME, LatexTextTransformation::new,
+            NumbersTextTransformation.NAME, NumbersTextTransformation::new);
 
-    public String transform(final String text, final Collection<String> transformations) {
-        final List<TextTransformation> textTransformations =
-                transformations.stream().map(
-                        x -> Optional.ofNullable(TRANSFORMATIONS.get(x))
-                                .orElseThrow(() -> new TransformationNotFoundException(x)))
-                        .collect(Collectors.toList());
-
-        return TextTransformation.composeAll(textTransformations).apply(text);
+    public String transform(final TextWithTransformationsDTO dto) {
+        final String text = dto.getText();
+        final Collection<String> transformations = dto.getTransformations();
+        TextTransformation transformation = new IdentityTextTransformation();
+        for (final String transformationName : transformations) {
+            final var transformationSupplier =
+                    TRANSFORMATIONS.get(transformationName);
+            if (transformationSupplier == null) {
+                throw new TransformationNotFoundException(transformationName);
+            }
+            transformation = transformationSupplier.apply(transformation);
+        }
+        return transformation.transform(text);
     }
 }

@@ -6,7 +6,7 @@ import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class NumbersTextTransformation implements TextTransformation {
+public class NumbersTextTransformation extends TextTransformation {
     public static final String NAME = "numbers";
 
     private static final String[] ONE_DIGIT = new String[]{"zero", "one", "two", "three", "four", "ive", "six", "seven"
@@ -16,6 +16,14 @@ public class NumbersTextTransformation implements TextTransformation {
     private static final String[] MULTIPLE_OF_TENS = new String[]{"", "", "twenty", "thirty", "forty", "fifty", "sixty"
             , "seventy", "eighty", "ninety"};
     private static final String[] POWER_OF_TENS = new String[]{"hundred", "thousand"};
+
+    public NumbersTextTransformation() {
+        super();
+    }
+
+    public NumbersTextTransformation(final TextTransformation previousTransformation) {
+        super(previousTransformation);
+    }
 
     private String getDigits(char[] num, int length) {
         return ONE_DIGIT[Character.getNumericValue(num[length - 1])];
@@ -104,16 +112,20 @@ public class NumbersTextTransformation implements TextTransformation {
     private ArrayList<String> findFloats(String stringToSearch) {
         Pattern integerPattern = Pattern.compile("(?:-?\\d+(?:\\.\\d+)|-?\\.\\d+)");
         Matcher matcher = integerPattern.matcher(stringToSearch);
-        ArrayList<String> floatsList = new ArrayList<String>();
+        ArrayList<String> floatsList = new ArrayList<>();
         while (matcher.find()) {
             floatsList.add(matcher.group());
         }
         return floatsList;
     }
 
+    private String numbers(final String text) {
+        return getInts(this.getFloats(text));
+    }
+
     @Override
-    public String apply(String s) {
-        return this.getInts(this.getFloats(s));
+    public String transform(final String text) {
+        return numbers(super.transform(text));
     }
 }
 
