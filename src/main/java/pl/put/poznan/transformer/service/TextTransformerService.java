@@ -20,7 +20,8 @@ public class TextTransformerService {
             UpperTextTransformation.NAME, UpperTextTransformation::new,
             CapitalizeTextTransformation.NAME, CapitalizeTextTransformation::new,
             LatexTextTransformation.NAME, LatexTextTransformation::new,
-            NumbersTextTransformation.NAME, NumbersTextTransformation::new);
+            NumbersTextTransformation.NAME, NumbersTextTransformation::new,
+            ReplaceWithAcronymsTransformation.NAME, ReplaceWithAcronymsTransformation::new);
 
     public String transform(final TextWithTransformationsDTO dto) {
         final String text = dto.getText();
