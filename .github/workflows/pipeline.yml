@@ -20,7 +20,11 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Build and test with Maven
-        run: mvn package
+        run: mvn clean compile test package
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        with:
+          files: "target/surefire-reports/**/*.xml"
       - name: Get version
         run: echo "VERSION=v$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
       - name: Generate documentation
