@@ -15,6 +15,6 @@ public abstract class TextTransformation {
     }
 
     public String transform(final String text) {
-        return previousTransformation.orElseGet(IdentityTextTransformation::new).transform(text);
+        return previousTransformation.map(x -> x.transform(text)).orElse(text);
     }
 }

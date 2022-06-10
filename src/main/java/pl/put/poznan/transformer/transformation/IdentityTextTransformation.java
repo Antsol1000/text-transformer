@@ -13,6 +13,6 @@ public class IdentityTextTransformation extends TextTransformation {
 
     @Override
     public String transform(final String text) {
-        return text;
+        return super.transform(text);
     }
 }
