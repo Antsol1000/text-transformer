@@ -23,6 +23,7 @@ public class TextTransformerService {
             entry(LatexTextTransformation.NAME, LatexTextTransformation::new),
             entry(NumbersTextTransformation.NAME, NumbersTextTransformation::new),
             entry(ReplaceWithAcronymsTransformation.NAME, ReplaceWithAcronymsTransformation::new),
+            entry(EmojiTextTransformation.NAME, EmojiTextTransformation::new),
             entry(RemoveRepetitionsTransformation.NAME, RemoveRepetitionsTransformation::new),
             entry(QuoteTextTransformation.NAME, QuoteTextTransformation::new));
 
