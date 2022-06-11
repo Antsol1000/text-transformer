@@ -6,7 +6,7 @@ import java.util.Map;
 import static java.util.Map.entry;
 
 /**
- * Class proving transformation of selected symbols into latex format
+ * Class proving way to express keywords as emojis: i.e.: I am so happy -> I am so :)
  * @author Nina Zukowska
  * @version 2.2
  */
@@ -31,7 +31,6 @@ public class EmojiTextTransformation extends TextTransformation {
             entry("suspicious", "(p_-)")
     );
 
-
     public EmojiTextTransformation() {
         super();
     }
@@ -40,22 +39,20 @@ public class EmojiTextTransformation extends TextTransformation {
         super(previousTransformation);
     }
 
-    private String emoji(final String text) {
-        String[] texts = {text};
-        String result = "";
+    private String emoji( String text) {
         for(HashMap.Entry<String, String> emoji : emojiMap.entrySet())
         {
-            result = texts[0].replace(emoji.getKey(), emoji.getValue());
-            texts[0] = result;
+            text = text.replace(emoji.getKey(), emoji.getValue());
         }
-        return texts[0];
+        return text;
 
     }
 
     /**
      * Method applying the transformation
      * @param text The text to which transformation will be applied
-     * @return transformed text
+     * @return transformed text with emojis
+     * @see  EmojiTextTransformation#emoji(String)
      */
     @Override
     public String transform(final String text) {
