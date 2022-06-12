@@ -6,7 +6,7 @@ import java.util.Map;
 import static java.util.Map.entry;
 
 /**
- * Class proving way to express keywords as emojis: i.e.: I am so happy -> I am so :)
+ * Class providing way to express keywords as emojis: i.e.: 'I am so happy' into 'I am so :)'
  * @author Nina Zukowska
  * @version 2.2
  */
