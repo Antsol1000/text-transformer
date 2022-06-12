@@ -24,6 +24,7 @@ public class TextTransformerService {
             entry(NumbersTextTransformation.NAME, NumbersTextTransformation::new),
             entry(ReplaceWithAcronymsTransformation.NAME, ReplaceWithAcronymsTransformation::new),
             entry(EmojiTextTransformation.NAME, EmojiTextTransformation::new),
+            entry(GoofyTextTransformation.NAME, GoofyTextTransformation::new),
             entry(RemoveRepetitionsTransformation.NAME, RemoveRepetitionsTransformation::new),
             entry(QuoteTextTransformation.NAME, QuoteTextTransformation::new));
 
