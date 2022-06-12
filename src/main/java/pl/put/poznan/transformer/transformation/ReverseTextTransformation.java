@@ -1,5 +1,10 @@
 package pl.put.poznan.transformer.transformation;
 
+/**
+ * Class proving transformation of reversing the text
+ * @author Antoni Solarski
+ * @version 1.6
+ */
 public class ReverseTextTransformation extends TextTransformation {
     public static final String NAME = "reverse";
 
@@ -11,6 +16,11 @@ public class ReverseTextTransformation extends TextTransformation {
         super(previousTransformation);
     }
 
+    /**
+     * Method performing transformation of reversing the text
+     * @param text The text to which transformation will be applied
+     * @return transformed text
+     */
     private String reverse(final String text) {
         final char[] given = text.toCharArray();
         final char[] t = new StringBuilder(text).reverse().toString().toCharArray();
@@ -23,7 +33,12 @@ public class ReverseTextTransformation extends TextTransformation {
         }
         return String.valueOf(t);
     }
-
+    /**
+     * Method applying the transformation of reversing the text
+     * @param text The text to which transformation will be applied
+     * @return transformed text
+     * @see ReverseTextTransformation#reverse(String)
+     */
     @Override
     public String transform(final String text) {
         return reverse(super.transform(text));

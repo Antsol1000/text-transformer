@@ -6,6 +6,11 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Class proving transformation of expanding acronyms in the text
+ * @author Mateusz Duda
+ * @version 1.6
+ */
 public class ExpandAcronymsTextTransformation extends TextTransformation {
     public static final String NAME = "expand";
 
@@ -24,6 +29,11 @@ public class ExpandAcronymsTextTransformation extends TextTransformation {
         put("aso", "and so on");
     }};
 
+    /**
+     * Method applying the transformation of expanding acronyms into text
+     * @param text The text to which transformation will be applied
+     * @return transformed text
+     */
     private String expand(final String text) {
         if ("".equals(text)) {
             return text;
@@ -45,7 +55,12 @@ public class ExpandAcronymsTextTransformation extends TextTransformation {
                 })
                 .collect(Collectors.joining(" "));
     }
-
+    /**
+     * Method applying the transformation of expanding acronyms into text
+     * @param text The text to which transformation will be applied
+     * @return transformed text
+     * @see ExpandAcronymsTextTransformation#expand(String)
+     */
     @Override
     public String transform(final String text) {
         return expand(super.transform(text));
