@@ -26,7 +26,8 @@ public class TextTransformerService {
             entry(EmojiTextTransformation.NAME, EmojiTextTransformation::new),
             entry(GoofyTextTransformation.NAME, GoofyTextTransformation::new),
             entry(RemoveRepetitionsTransformation.NAME, RemoveRepetitionsTransformation::new),
-            entry(QuoteTextTransformation.NAME, QuoteTextTransformation::new));
+            entry(QuoteTextTransformation.NAME, QuoteTextTransformation::new),
+            entry(WhiteSpaceTextTransformation.NAME, WhiteSpaceTextTransformation::new));
 
     public String transform(final TextWithTransformationsDTO dto) {
         final String text = dto.getText();
